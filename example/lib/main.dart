@@ -47,8 +47,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final double _initFabHeight = 120.0;
-  double _fabHeight;
-  double _panelHeightOpen;
+  double? _fabHeight;
+  double? _panelHeightOpen;
   double _panelHeightClosed = 95.0;
 
   @override
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
 
           SlidingUpPanel(
-            maxHeight: _panelHeightOpen,
+            maxHeight: _panelHeightOpen!,
             minHeight: _panelHeightClosed,
             parallaxEnabled: true,
             parallaxOffset: .5,
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             panelBuilder: (sc) => _panel(sc),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(18.0), topRight: Radius.circular(18.0)),
             onPanelSlide: (double pos) => setState((){
-              _fabHeight = pos * (_panelHeightOpen - _panelHeightClosed) + _initFabHeight;
+              _fabHeight = pos * (_panelHeightOpen! - _panelHeightClosed) + _initFabHeight;
             }),
           ),
 
